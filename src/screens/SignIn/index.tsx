@@ -3,22 +3,26 @@ import {
     View,
     Text,
     Image,
-    StatusBar,
 } from 'react-native';
 
 import IllustrationImg from '../../assets/illustration.png';
 import { styles } from './style';
 
 import { ButtonIcon } from '../../components/ButtonIcon';
+import { useNavigation } from '@react-navigation/native';
+
 
 export function SignIn() {
+    const navigation = useNavigation()
+
+    function handleSignIn() {
+        navigation.navigate('Home');
+    }
+
+
     return (
         <View style={styles.container}>
-            <StatusBar
-                barStyle="light-content"
-                backgroundColor="transparent"
-                translucent
-            />
+
 
             <Image
                 source={IllustrationImg}
@@ -28,9 +32,9 @@ export function SignIn() {
 
             <View style={styles.content}>
                 <Text style={styles.title}>
-                    Organize {`\n`}
-                    suas jogatinas {`\n`}
-                    facilmente
+                    Conecte-se {'\n'}
+                    e organize suas {'\n'}
+                    jogatinas
                 </Text>
 
                 <Text style={styles.subtitle}>
@@ -39,8 +43,8 @@ export function SignIn() {
                 </Text>
 
                 <ButtonIcon
+                    onPress={handleSignIn}
                     title="Entrar com Discord"
-                    activeOpacity={0.7}
                 />
 
             </View>
